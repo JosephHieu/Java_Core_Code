@@ -45,7 +45,7 @@ public class Main {
         for (var bd : bds) {
             System.out.printf("%-15s %-15d %-8d %d %n",
                     bd, bd.unscaledValue(), bd.scale(), bd.precision());
-            bd =  bd.setScale(2, RoundingMode.HALF_UP);
+            bd = bd.setScale(2, RoundingMode.HALF_UP);
             System.out.printf("%-15s %-15d %-8d %d %n",
                     bd, bd.unscaledValue(), bd.scale(), bd.precision());
         }
@@ -70,14 +70,13 @@ public class Main {
         BigDecimal totalChecksAmount = checkAmount.multiply(
                 BigDecimal.valueOf(beneficiaries)
         );
+
         System.out.printf("Combined: %.2f%n", totalChecksAmount);
         System.out.println("Remaining = " + policyPayout.subtract(totalChecksAmount));
 
         System.out.printf("%-15s %-15d %-8d %d %n",
                 totalChecksAmount, totalChecksAmount.unscaledValue(), totalChecksAmount.scale(),
                 totalChecksAmount.precision());
-
-
 
     }
 }
