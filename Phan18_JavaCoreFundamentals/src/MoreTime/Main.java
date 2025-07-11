@@ -43,7 +43,7 @@ public class Main {
         Instant instantNow = Instant.now();
         System.out.println(instantNow);
 
-        System.out.println("------");
+        System.out.println("-----------------------");
 
         for (ZoneId z : List.of(
                 ZoneId.of("Australia/Sydney"),
