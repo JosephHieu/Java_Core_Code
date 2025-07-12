@@ -1,0 +1,81 @@
+Index: ../Phan18_JavaCoreFundamentals/src/DateTimeProject/MainAgain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package DateTimeProject;\r\n\r\nimport java.time.*;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.time.format.FormatStyle;\r\nimport java.time.temporal.ChronoField;\r\nimport java.time.temporal.ChronoUnit;\r\n\r\npublic class MainAgain {\r\n\r\n    public static void main(String[] args) {\r\n\r\n        LocalDate today = LocalDate.now();\r\n        System.out.println(today);\r\n\r\n        LocalDate Five5 = LocalDate.of(2022, 5, 5);\r\n        System.out.println(Five5);\r\n\r\n        LocalDate May5th = LocalDate.of(2022, Month.MAY, 5);\r\n        System.out.println(May5th);\r\n\r\n        LocalDate Day125 = LocalDate.ofYearDay(2022, 125);\r\n        System.out.println(Day125);\r\n\r\n        LocalDate May5 = LocalDate.parse(\"2022-05-05\");\r\n        System.out.println(May5);\r\n\r\n        System.out.println(May5.getYear());\r\n        System.out.println(May5.getMonth());\r\n\r\n        System.out.println(May5.getMonthValue());\r\n\r\n        System.out.println(May5.getDayOfMonth());\r\n        System.out.println(May5.getDayOfWeek());\r\n        System.out.println(May5.getDayOfYear());\r\n\r\n        System.out.println(May5.get(ChronoField.YEAR));\r\n        System.out.println(May5.get(ChronoField.MONTH_OF_YEAR));\r\n        System.out.println(May5.get(ChronoField.DAY_OF_MONTH));\r\n        System.out.println(May5.get(ChronoField.DAY_OF_YEAR));\r\n\r\n        System.out.println(May5.withYear(2000));\r\n        System.out.println(May5.withMonth(3));\r\n        System.out.println(May5.withDayOfMonth(4));\r\n        System.out.println(May5);\r\n        System.out.println(May5.with(ChronoField.DAY_OF_YEAR, 126));\r\n        System.out.println(May5.plusYears(1));\r\n        System.out.println(May5.plusMonths(12));\r\n        System.out.println(May5.plusDays(365));\r\n        System.out.println(May5.plusWeeks(52));\r\n        System.out.println(May5.plus(365, ChronoUnit.DAYS));\r\n        System.out.println(May5.plus(365, ChronoUnit.YEARS));\r\n        System.out.println(May5.plus(365, ChronoUnit.MONTHS));\r\n\r\n        System.out.println(\"May5 > today ? \" + May5.isAfter(today));\r\n        System.out.println(\"today > May5 ? \" + May5.isBefore(today));\r\n        System.out.println(\"May5 > today ? \" + May5.compareTo(today));\r\n        System.out.println(\"today > May5 ? \" + today.compareTo(May5));\r\n\r\n        System.out.println(\"today = now ? \" + today.compareTo(LocalDate.now()));\r\n        System.out.println(\"today = now ? \" + today.equals(LocalDate.now()));\r\n\r\n        System.out.println(today.isLeapYear());\r\n        System.out.println(May5.minusYears(2).isLeapYear());\r\n\r\n        System.out.println(\"------------------------------------\");\r\n        May5.datesUntil(May5.plusDays(7))\r\n                .forEach(System.out::println);\r\n\r\n        System.out.println(\"------------------------------------\");\r\n        May5.datesUntil(May5.plusYears(1), Period.ofDays(7))\r\n                .forEach(System.out::println);\r\n\r\n        System.out.println(\"------------------------------------\");\r\n        LocalTime time = LocalTime.now();\r\n        System.out.println(time);\r\n\r\n        LocalTime sevenAM = LocalTime.of(7, 0);\r\n        System.out.println(sevenAM);\r\n\r\n        LocalTime sevenThirty = LocalTime.of(7, 30, 15);\r\n        System.out.println(sevenThirty);\r\n\r\n        LocalTime sevenPM = LocalTime.parse(\"19:00\");\r\n        LocalTime sevenThirtyPM = LocalTime.parse(\"19:30:15.1000\");\r\n        System.out.println(sevenPM.get(ChronoField.AMPM_OF_DAY));\r\n        System.out.println(sevenThirtyPM.get(ChronoField.AMPM_OF_DAY));\r\n\r\n        System.out.println(sevenThirtyPM.getHour());\r\n        System.out.println(sevenThirtyPM.get(ChronoField.HOUR_OF_DAY));\r\n\r\n        System.out.println(sevenThirtyPM.plus(24, ChronoUnit.HOURS));\r\n\r\n        System.out.println(sevenPM.range(ChronoField.HOUR_OF_DAY));\r\n        System.out.println(sevenPM.range(ChronoField.MINUTE_OF_HOUR));\r\n        System.out.println(sevenPM.range(ChronoField.MINUTE_OF_DAY));\r\n        System.out.println(sevenPM.range(ChronoField.SECOND_OF_MINUTE));\r\n        System.out.println(sevenPM.range(ChronoField.SECOND_OF_DAY));\r\n\r\n        LocalDateTime todayAndNow = LocalDateTime.now();\r\n        System.out.println(todayAndNow);\r\n\r\n        LocalDateTime May5Noon = LocalDateTime.of(2022, 5, 5,\r\n                12, 0, 16);\r\n\r\n        System.out.printf(\"%tD %tr %n\", May5Noon, May5Noon);\r\n        System.out.printf(\"%1$tF %1$tT %n\", May5Noon);\r\n\r\n        System.out.println(todayAndNow.format(DateTimeFormatter.ISO_WEEK_DATE));\r\n\r\n        DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);\r\n        System.out.println(May5Noon.format(dtf));\r\n\r\n        System.out.println(May5Noon.format(DateTimeFormatter.ofLocalizedDateTime(\r\n                FormatStyle.MEDIUM)));\r\n\r\n        LocalDateTime May6Noon = May5Noon.plusHours(24);\r\n        System.out.println(May6Noon.format(DateTimeFormatter.ofLocalizedDateTime(\r\n                FormatStyle.MEDIUM)));\r\n\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Phan18_JavaCoreFundamentals/src/DateTimeProject/MainAgain.java b/../Phan18_JavaCoreFundamentals/src/DateTimeProject/MainAgain.java
+--- a/../Phan18_JavaCoreFundamentals/src/DateTimeProject/MainAgain.java	(revision f234812ed54b95acb1f03b989e3c559d8a8d8167)
++++ b/../Phan18_JavaCoreFundamentals/src/DateTimeProject/MainAgain.java	(date 1752203063686)
+@@ -3,6 +3,8 @@
+ import java.time.*;
+ import java.time.format.DateTimeFormatter;
+ import java.time.format.FormatStyle;
++import java.time.LocalDate;
++import java.time.Month;
+ import java.time.temporal.ChronoField;
+ import java.time.temporal.ChronoUnit;
+ 
+@@ -63,61 +65,6 @@
+         System.out.println(today.isLeapYear());
+         System.out.println(May5.minusYears(2).isLeapYear());
+ 
+-        System.out.println("------------------------------------");
+-        May5.datesUntil(May5.plusDays(7))
+-                .forEach(System.out::println);
+-
+-        System.out.println("------------------------------------");
+-        May5.datesUntil(May5.plusYears(1), Period.ofDays(7))
+-                .forEach(System.out::println);
+-
+-        System.out.println("------------------------------------");
+-        LocalTime time = LocalTime.now();
+-        System.out.println(time);
+-
+-        LocalTime sevenAM = LocalTime.of(7, 0);
+-        System.out.println(sevenAM);
+-
+-        LocalTime sevenThirty = LocalTime.of(7, 30, 15);
+-        System.out.println(sevenThirty);
+-
+-        LocalTime sevenPM = LocalTime.parse("19:00");
+-        LocalTime sevenThirtyPM = LocalTime.parse("19:30:15.1000");
+-        System.out.println(sevenPM.get(ChronoField.AMPM_OF_DAY));
+-        System.out.println(sevenThirtyPM.get(ChronoField.AMPM_OF_DAY));
+-
+-        System.out.println(sevenThirtyPM.getHour());
+-        System.out.println(sevenThirtyPM.get(ChronoField.HOUR_OF_DAY));
+-
+-        System.out.println(sevenThirtyPM.plus(24, ChronoUnit.HOURS));
+-
+-        System.out.println(sevenPM.range(ChronoField.HOUR_OF_DAY));
+-        System.out.println(sevenPM.range(ChronoField.MINUTE_OF_HOUR));
+-        System.out.println(sevenPM.range(ChronoField.MINUTE_OF_DAY));
+-        System.out.println(sevenPM.range(ChronoField.SECOND_OF_MINUTE));
+-        System.out.println(sevenPM.range(ChronoField.SECOND_OF_DAY));
+-
+-        LocalDateTime todayAndNow = LocalDateTime.now();
+-        System.out.println(todayAndNow);
+-
+-        LocalDateTime May5Noon = LocalDateTime.of(2022, 5, 5,
+-                12, 0, 16);
+-
+-        System.out.printf("%tD %tr %n", May5Noon, May5Noon);
+-        System.out.printf("%1$tF %1$tT %n", May5Noon);
+-
+-        System.out.println(todayAndNow.format(DateTimeFormatter.ISO_WEEK_DATE));
+-
+-        DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
+-        System.out.println(May5Noon.format(dtf));
+-
+-        System.out.println(May5Noon.format(DateTimeFormatter.ofLocalizedDateTime(
+-                FormatStyle.MEDIUM)));
+-
+-        LocalDateTime May6Noon = May5Noon.plusHours(24);
+-        System.out.println(May6Noon.format(DateTimeFormatter.ofLocalizedDateTime(
+-                FormatStyle.MEDIUM)));
+-
+ 
+ 
+     }
