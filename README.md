@@ -1,4 +1,4 @@
-# JAVA_CORE_CODE
+## JAVA_CORE_CODE COMPREHENSIVE
 ### Java Expressions, Statements, Code Blocks, and Method Overloading
 ### Conditional Logic, Loops, and Interactive Java Applications
 ### Java OOP: Classes & Inheritance
